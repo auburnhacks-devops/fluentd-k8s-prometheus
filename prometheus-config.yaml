@@ -600,6 +600,12 @@ data:
         target_label: pod
       - source_labels: [__meta_kubernetes_service_name]
         target_label: service
+    
+    - job_name: fluentd
+      scrape_interval: 5s
+      static_configs:
+      - targets: ['172.21.224.3:24231']
+      metrics_path: /metrics    
 
     rule_files:
       - '/etc/rules/*.yaml'
