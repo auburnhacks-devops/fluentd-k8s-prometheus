@@ -210,7 +210,7 @@ data:
         source_labels:
         - __meta_kubernetes_pod_container_name
         target_label: kubernetes_pod_container_name
-        
+
     - job_name: 'k8s-kafka'
       tls_config:
         ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
@@ -258,7 +258,7 @@ data:
       - action: replace
         source_labels:
         - __meta_kubernetes_pod_container_name
-        target_label: kubernetes_pod_container_name        
+        target_label: kubernetes_pod_container_name
 
     - job_name: 'k8s-appmetrics'
       kubernetes_sd_configs:
@@ -600,12 +600,12 @@ data:
         target_label: pod
       - source_labels: [__meta_kubernetes_service_name]
         target_label: service
-    
+
     - job_name: fluentd
       scrape_interval: 5s
       static_configs:
       - targets: ['172.21.224.3:24231']
-      metrics_path: /metrics    
+      metrics_path: /metrics
 
     rule_files:
       - '/etc/rules/*.yaml'
