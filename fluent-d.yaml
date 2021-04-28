@@ -132,6 +132,19 @@ data:
         flush_interval 5
         timeout_label @NORMAL
       </filter>
+      
+      <filter **>
+        @type prometheus
+        <metric>
+          name fluentd_input_status_num_records_total
+          type counter
+          desc The total number of incoming records
+          <labels>
+            tag ${tag}
+            hostname ${hostname}
+          </labels>
+        </metric>
+      </filter>
 
       <match **>
         @type relabel
@@ -371,7 +384,7 @@ data:
 
       <match **>
         @type relabel
-        @label @OUTPUT
+        @label @NORMAL
       </match>
     </label> 
 ---
