@@ -64,7 +64,7 @@ subjects:
   name: node-exporter
   namespace: knative-monitoring
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: node-exporter
@@ -76,16 +76,13 @@ spec:
         app: node-exporter
       name: node-exporter
       namespace: knative-monitoring
-  selector:
-      matchLabels:
-        app: node-exporter   
     spec:
       containers:
       - args:
         - --web.listen-address=127.0.0.1:9101
         - --path.procfs=/host/proc
         - --path.sysfs=/host/sys
-        image: docker.tools.tsys.aws/quay.io/prometheus/node-exporter:v0.15.2
+        image: dockermirror.tpp.tsysecom.com/quay.io/prometheus/node-exporter:v0.15.2
         name: node-exporter
         resources:
           limits:
@@ -104,7 +101,7 @@ spec:
       - args:
         - --secure-listen-address=:9100
         - --upstream=http://127.0.0.1:9101/
-        image: docker.tools.tsys.aws/quay.io/coreos/kube-rbac-proxy:v0.3.0
+        image: dockermirror.tpp.tsysecom.com/quay.io/coreos/kube-rbac-proxy:v0.3.0
         name: kube-rbac-proxy
         ports:
         - containerPort: 9100
