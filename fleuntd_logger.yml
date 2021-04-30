@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: fleuntd-logger
+  name: fluentd-logger
 spec:
   containers:
-  - name: fleuntd-logger
+  - name: fluentd-logger
     image: docker.tools.tsys.aws/amazon/fluentd-logger:v1
