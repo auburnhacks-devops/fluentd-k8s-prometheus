@@ -76,6 +76,9 @@ spec:
         app: node-exporter
       name: node-exporter
       namespace: knative-monitoring
+  selector:
+      matchLabels:
+        app: node-exporter   
     spec:
       containers:
       - args:
