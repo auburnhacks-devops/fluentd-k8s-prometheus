@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: fluentd-logger-9
+  namespace: fluentd-logger
 spec:
   containers:
   - name: fluentd-logger-9
